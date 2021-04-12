@@ -22,5 +22,5 @@ Business Rules\
 •	All Restaurants will have a menu and a menu will have menu item(s) with nutritional information. Orders will pull nutritional information from menu item(s) in the order.  
 
 Entity Relationship Diagram\
-https://imgur.com/uRxsB05 
+![alt text](https://imgur.com/uRxsB05.png)
 
