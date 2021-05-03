@@ -1,6 +1,6 @@
 # Final-Project
 ITCS 3160 - Database Design and Implementation: Project Group 6\
-Aaron Dickerson, Jay Patel, Joshua Clayton, Swapnil Katakwar
+Aaron Dickerson, Jay Patel, Joshua Clayton, Swapnil Katakwar, Yoel Kiflezghi
 
 Project Scope\
 Food delivery services have become a popular norm in society.
