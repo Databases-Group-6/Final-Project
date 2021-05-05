@@ -24,6 +24,8 @@ Business Rules\
 Entity Relationship Diagram\
 ![alt text](https://imgur.com/uRxsB05.png)
 
-Query Optimization\
+Query Optimization and EXPLAIN Statement Discussion\
 Optimization is a key aspect of queries and scripts as its usually not possible to the resourcces needed to make a script run as quickly as possible.
-It is also important to ensure overoptimzation does not occur as this can be unneccessary and result in excessive usage of resources. 
+It is also important to ensure overoptimzation does not occur as this can be unneccessary and result in excessive usage of resources. The EXPLAIN statement
+is a good tool that can be used to optimize SQL statements and scripts. With the help of EXPLAIN, you can see where you should add indexes to tables so 
+that the statement executes faster by using indexes to find rows. You can also use EXPLAIN to check whether the optimizer joins the tables in an optimal order
