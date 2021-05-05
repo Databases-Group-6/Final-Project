@@ -141,77 +141,6 @@ INSERT INTO `location` VALUES (1,'Suite 157','69612 Will Ferry\nEwellfort, KS 63
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
---
--- Table structure for table `rating`
---
-
-DROP TABLE IF EXISTS `rating`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `rating` (
-  `rating_id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_id` int(11) NOT NULL,
-  `rating` int(1) DEFAULT NULL,
-  PRIMARY KEY (`rating_id`),
-  KEY `fk_Rt_order_id` (`order_id`),
-  CONSTRAINT `fk_Rt_order_id` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `rating`
---
-LOCK TABLES `rating` WRITE;
-INSERT INTO `rating` (`rating_id`,`order_id`,`rating`) VALUES (1,1,1),(2,2,3),(3,3,5),(4,4,5),(5,5,1),(6,6,2),(7,7,3),(8,8,5),(9,9,3),(10,10,4),(11,11,3),(12,12,4),(13,13,1),(14,14,3),(15,15,3),(16,16,2),(17,17,3),(18,18,5),(19,19,4),(20,20,1);
-UNLOCK TABLES;
-
---
--- Table structure for table `restaurant_rating`
---
-
-DROP TABLE IF EXISTS `restaurant_rating`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `restaurant_rating` (
-  `restaurant_rating_id` int(11) NOT NULL AUTO_INCREMENT,
-  `rating_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`restaurant_rating_id`),
-  KEY `fk_R_rating_id` (`rating_id`),
-  CONSTRAINT `fk_R_rating_id` FOREIGN KEY (`rating_id`) REFERENCES `rating` (`rating_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `restaurant_rating`
---
-LOCK TABLES `restaurant_rating` WRITE;
-INSERT INTO `restaurant_rating` (`restaurant_rating_id`,`rating_id`) VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20);
-UNLOCK TABLES;
-
---
--- Table structure for table `driver_rating`
---
-
-DROP TABLE IF EXISTS `driver_rating`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `driver_rating` (
-  `driver_rating_id` int(11) NOT NULL AUTO_INCREMENT,
-  `rating_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`driver_rating_id`),
-  KEY `fk_D_rating_id` (`rating_id`),
-  CONSTRAINT `fk_D_rating_id` FOREIGN KEY (`rating_id`) REFERENCES `rating` (`rating_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `driver_rating`
---
-LOCK TABLES `driver_rating` WRITE;
-INSERT INTO `driver_rating` (`driver_rating_id`,`rating_id`) VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20);
-UNLOCK TABLES;
-
 --
 -- Table structure for table `person`
 --
@@ -316,6 +245,152 @@ VIEW `restaurants_with_lake` AS
     WHERE
         (`restaurant`.`restaurant_name` = 'Lake%')
 	ORDER BY `restaurant`.`restaurant_name`;
+
+--
+-- Table structure for table `rating`
+--
+
+DROP TABLE IF EXISTS `rating`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `rating` (
+  `rating_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `rating` int(1) DEFAULT NULL,
+  PRIMARY KEY (`rating_id`),
+  KEY `fk_Rt_order_id` (`order_id`),
+  CONSTRAINT `fk_Rt_order_id` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rating`
+--
+LOCK TABLES `rating` WRITE;
+/*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+INSERT INTO `rating` (`rating_id`,`order_id`,`rating`) VALUES (1,1,1),(2,2,3),(3,3,5),(4,4,5),(5,5,1),(6,6,2),(7,7,3),(8,8,5),(9,9,3),(10,10,4),(11,11,3),(12,12,4),(13,13,1),(14,14,3),(15,15,3),(16,16,2),(17,17,3),(18,18,5),(19,19,4),(20,20,1),(21,1,3),(22,2,2),(23,3,1),(24,4,5),(25,5,2),(26,6,4),(27,7,2),(28,8,3),(29,9,3),(30,10,1),(31,11,1),(32,12,2),(33,13,1),(34,14,4),(35,15,3),(36,16,2),(37,17,1),(38,18,4),(39,19,1),(40,20,3);
+/*!40000 ALTER TABLE `rating` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `restaurant_rating`
+--
+
+DROP TABLE IF EXISTS `restaurant_rating`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `restaurant_rating` (
+  `restaurant_rating_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rating_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`restaurant_rating_id`),
+  KEY `fk_R_rating_id` (`rating_id`),
+  CONSTRAINT `fk_R_rating_id` FOREIGN KEY (`rating_id`) REFERENCES `rating` (`rating_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `restaurant_rating`
+--
+LOCK TABLES `restaurant_rating` WRITE;
+/*!40000 ALTER TABLE `restaurant_rating` DISABLE KEYS */;
+INSERT INTO `restaurant_rating` (`restaurant_rating_id`,`rating_id`) VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20);
+/*!40000 ALTER TABLE `restaurant_rating` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `driver_rating`
+--
+
+DROP TABLE IF EXISTS `driver_rating`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `driver_rating` (
+  `driver_rating_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rating_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`driver_rating_id`),
+  KEY `fk_D_rating_id` (`rating_id`),
+  CONSTRAINT `fk_D_rating_id` FOREIGN KEY (`rating_id`) REFERENCES `rating` (`rating_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `driver_rating`
+--
+LOCK TABLES `driver_rating` WRITE;
+/*!40000 ALTER TABLE `driver_rating` DISABLE KEYS */;
+INSERT INTO `driver_rating` (`driver_rating_id`,`rating_id`) VALUES (1,21),(2,22),(3,23),(4,24),(5,25),(6,26),(7,27),(8,28),(9,29),(10,30),(11,31),(12,32),(13,33),(14,34),(15,35),(16,36),(17,37),(18,38),(19,39),(20,40);
+/*!40000 ALTER TABLE `driver_rating` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- View structure for view `drivers_with_high_ratings`
+--
+
+USE `campus_eats_fall2020`;
+CREATE 
+     OR REPLACE ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `drivers_with_high_ratings` AS
+    SELECT 
+        `rating`.`rating_id` AS `person_id`,
+        `rating`.`rating` AS `person_name`,
+        `rating`.`order_id` AS `person_email`,
+        `driver_rating`.`driver_rating_id` AS `student_id`,
+        `driver_rating`.`rating_id` AS `graduation_year`
+    FROM
+        (`rating`
+        JOIN `driver_rating` ON ((`driver_rating`.`rating_id` = `rating`.`rating_id`)))
+    WHERE
+        (`rating`.`rating` >= 3)
+	ORDER BY
+		`driver_rating`.`driver_rating_id` AND `rating`.`rating_id`;
+
+--
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_id` int(11) NOT NULL,
+  `delivery_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL,
+  `driver_id` int(11) NOT NULL,
+  `restaurant_id` int(11) NOT NULL,
+  `total_price` float NOT NULL,
+  `delivery_charge` float DEFAULT NULL,
+  `driver_rating_id` int(11) NOT NULL,
+  `restaurant_rating_id` int(11) NOT NULL,
+  PRIMARY KEY (`order_id`),
+  KEY `fk_O_person_id` (`person_id`),
+  KEY `fk_O_delivery_id` (`delivery_id`),
+  KEY `fk_O_location_id` (`location_id`),
+  KEY `fk_O_driver_id` (`driver_id`),
+  KEY `fk_O_restaurant_id` (`restaurant_id`),
+  KEY `fk_O_driver_rating_id` (`driver_rating_id`),
+  KEY `fk_O_restaurant_rating_id` (`restaurant_rating_id`),
+  CONSTRAINT `fk_O_delivery_id` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`),
+  CONSTRAINT `fk_O_driver_id` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`),
+  CONSTRAINT `fk_O_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`),
+  CONSTRAINT `fk_O_person_id` FOREIGN KEY (`person_id`) REFERENCES `person` (`person_id`),
+  CONSTRAINT `fk_O_restaurant_id` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`restaurant_id`),
+  CONSTRAINT `fk_O_driver_rating_id` FOREIGN KEY (`driver_rating_id`) REFERENCES `driver_rating` (`driver_rating_id`),
+  CONSTRAINT `fk_O_restaurant_rating_id` FOREIGN KEY (`restaurant_rating_id`) REFERENCES `restaurant_rating` (`restaurant_rating_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+INSERT INTO `order` (`order_id`, `person_id`, `delivery_id`, `location_id`, `driver_id`, `restaurant_id`, `total_price`, `delivery_charge`, `driver_rating_id`, `restaurant_rating_id`) VALUES (1,1,1,1,1,1,15.63,6.63,1,1),(2,2,2,2,2,1,18.03,9.43,2,2),(3,3,3,3,3,1,11.91,7.42,3,3),(4,4,4,4,4,1,19.13,6.26,4,4),(5,5,5,5,5,1,13.76,6.24,5,5),(6,6,6,6,6,2,5.4,4.83,6,6),(7,7,7,7,7,2,14.05,8.57,7,7),(8,8,8,8,8,2,3.81,2.38,8,8),(9,9,9,9,1,2,17.1,6.72,9,9),(10,10,10,10,2,10,12.71,1.82,10,10),(11,11,11,11,3,3,3.9,7.26,11,11),(12,12,12,12,4,3,6.82,7.4,12,12),(13,13,13,13,5,3,4.73,7.43,13,13),(14,14,14,14,6,3,12.08,1.21,14,14),(15,15,15,15,7,3,3.83,4.77,15,15),(16,16,16,16,8,4,12.43,2.76,16,16),(17,17,17,17,1,4,6.61,4.85,17,17),(18,18,18,18,2,4,7.89,5.69,18,18),(19,19,19,19,3,4,16.54,4.88,19,19),(20,20,20,20,4,4,3.21,4.98,20,20);
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `staff`
@@ -433,6 +508,13 @@ insert into student (person_id, position, is_admin) values
 end if;
 END ;;
 DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+
+--
+-- Stored procedure 'CalculateAvgRating'
+--
 
 USE `campus_eats_fall2020`;
 DROP procedure IF EXISTS `CalculateAvgRating`;
@@ -456,9 +538,7 @@ end if;
 END$$
 
 DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
+
 -- /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
@@ -506,52 +586,11 @@ DELIMITER ;
 -- /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+
 -- Dump completed on 2019-12-02 21:16:05
---
--- Table structure for table `order`
---
 
-DROP TABLE IF EXISTS `order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order` (
-  `order_id` int(11) NOT NULL AUTO_INCREMENT,
-  `person_id` int(11) NOT NULL,
-  `delivery_id` int(11) NOT NULL,
-  `location_id` int(11) NOT NULL,
-  `driver_id` int(11) NOT NULL,
-  `restaurant_id` int(11) NOT NULL,
-  `total_price` float NOT NULL,
-  `delivery_charge` float DEFAULT NULL,
-  `driver_rating_id` int(11) NOT NULL,
-  `restaurant_rating_id` int(11) NOT NULL,
-  PRIMARY KEY (`order_id`),
-  KEY `fk_O_person_id` (`person_id`),
-  KEY `fk_O_delivery_id` (`delivery_id`),
-  KEY `fk_O_location_id` (`location_id`),
-  KEY `fk_O_driver_id` (`driver_id`),
-  KEY `fk_O_restaurant_id` (`restaurant_id`),
-  KEY `fk_O_driver_rating_id` (`driver_rating_id`),
-  KEY `fk_O_restaurant_rating_id` (`restaurant_rating_id`),
-  CONSTRAINT `fk_O_delivery_id` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`),
-  CONSTRAINT `fk_O_driver_id` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`),
-  CONSTRAINT `fk_O_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`),
-  CONSTRAINT `fk_O_person_id` FOREIGN KEY (`person_id`) REFERENCES `person` (`person_id`),
-  CONSTRAINT `fk_O_restaurant_id` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`restaurant_id`),
-  CONSTRAINT `fk_O_driver_rating_id` FOREIGN KEY (`driver_rating_id`) REFERENCES `driver_rating` (`driver_rating_id`),
-  CONSTRAINT `fk_O_restaurant_rating_id` FOREIGN KEY (`restaurant_rating_id`) REFERENCES `restaurant_rating` (`restaurant_rating_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `order`
---
 
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (1,1,1,1,1,1,15.63,6.63,1,1),(2,2,2,2,2,1,18.03,9.43,2,2),(3,3,3,3,3,1,11.91,7.42,3,3),(4,4,4,4,4,1,19.13,6.26,4,4),(5,5,5,5,5,1,13.76,6.24,5,5),(6,6,6,6,6,2,5.4,4.83,6,6),(7,7,7,7,7,2,14.05,8.57,7,7),(8,8,8,8,8,2,3.81,2.38,8,8),(9,9,9,9,1,2,17.1,6.72,9,9),(10,10,10,10,2,10,12.71,1.82,10,10),(11,11,11,11,3,3,3.9,7.26,11,11),(12,12,12,12,4,3,6.82,7.4,12,12),(13,13,13,13,5,3,4.73,7.43,13,13),(14,14,14,14,6,3,12.08,1.21,14,14),(15,15,15,15,7,3,3.83,4.77,15,15),(16,16,16,16,8,4,12.43,2.76,16,16),(17,17,17,17,1,4,6.61,4.85,17,17),(18,18,18,18,2,4,7.89,5.69,18,18),(19,19,19,19,3,4,16.54,4.88,19,19),(20,20,20,20,4,4,3.21,4.98,20,20);
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -559,7 +598,7 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 -- /*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;add_personadd_person
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `order_AFTER_INSERT` AFTER INSERT ON `order` FOR EACH ROW BEGIN
 	insert into niner_eats.delivery (driver_id, vehicle_id) values(new.driver_id, 2);
