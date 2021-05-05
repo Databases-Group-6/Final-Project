@@ -297,6 +297,27 @@ INSERT INTO `restaurant` VALUES (1,'5357 Adrianna Shoal Suite 418\nEnochside, OH
 UNLOCK TABLES;
 
 --
+-- View structure for view `restaurants_with_lake`
+--
+
+USE `campus_eats_fall2020`;
+CREATE 
+     OR REPLACE ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `restaurants_with_lake` AS
+    SELECT 
+        `restaurant`.`restaurant_id` AS `restaurant_id`,
+        `restaurant`.`location` AS `restaurant_location`,
+        `restaurant`.`restaurant_name` AS `restaurant_name`,
+        `restaurant`.`schedule` AS `restaurant_schedule`
+    FROM
+        (`restaurant`)
+    WHERE
+        (`restaurant`.`restaurant_name` = 'Lake%')
+	ORDER BY `restaurant`.`restaurant_name`;
+
+--
 -- Table structure for table `staff`
 --
 
