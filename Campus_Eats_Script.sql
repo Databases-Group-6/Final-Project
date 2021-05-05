@@ -11,6 +11,7 @@ Use Campus_Eats_Fall2020;
 -- this database is only to be used for educational and class
 -- purposes and can not be replicated or used for commercial purposes
 -- or private interests without permission by the Mavericks team
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -172,7 +173,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `restaurant_rating`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `restaurant_ratingCalculateAvgRatingCalculateAvgRating` (
+CREATE TABLE `restaurant_rating` (
   `restaurant_rating_id` int(11) NOT NULL AUTO_INCREMENT,
   `rating_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`restaurant_rating_id`),
@@ -411,6 +412,29 @@ insert into student (person_id, position, is_admin) values
 end if;
 END ;;
 DELIMITER ;
+
+USE `campus_eats_fall2020`;
+DROP procedure IF EXISTS `CalculateAvgRating`;
+
+DELIMITER $$
+USE `campus_eats_fall2020`$$
+CREATE DEFINER='root'@'localhost' PROCEDURE `CalculateAvgRating` (IN rating_id INT, OUT avg_rating FLOAT)
+BEGIN
+declare rating_sum INT;
+declare avg_rating FLOAT;
+
+SELECT Count(rating_id) as count, SUM(rating_id) as rating_sum
+FROM rating;
+
+if rating_sum != 0 THEN
+	set avg_rating = rating_sum / count;
+else 
+	set avg_rating = rating_sum;
+end if;
+
+END$$
+
+DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
@@ -524,5 +548,3 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 -- /*!50003 SET collation_connection  = @saved_col_connection */ ;
-
-
