@@ -24,3 +24,5 @@ Business Rules\
 Entity Relationship Diagram\
 ![alt text](https://imgur.com/uRxsB05.png)
 
+Query Optimization\
+
