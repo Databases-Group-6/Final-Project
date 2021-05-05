@@ -11,7 +11,6 @@ Use Campus_Eats_Fall2020;
 -- this database is only to be used for educational and class
 -- purposes and can not be replicated or used for commercial purposes
 -- or private interests without permission by the Mavericks team
-add_personadd_person
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -23,7 +22,7 @@ add_personadd_person
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---ratingrating
+--
 -- Table structure for table `delivery`
 --
 
