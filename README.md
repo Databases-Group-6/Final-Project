@@ -25,4 +25,5 @@ Entity Relationship Diagram\
 ![alt text](https://imgur.com/uRxsB05.png)
 
 Query Optimization\
-text
+Optimization is a key aspect of queries and scripts as its usually not possible to the resourcces needed to make a script run as quickly as possible.
+It is also important to ensure overoptimzation does not occur as this can be unneccessary and result in excessive usage of resources. 
