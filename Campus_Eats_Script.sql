@@ -11,7 +11,7 @@ Use Campus_Eats_Fall2020;
 -- this database is only to be used for educational and class
 -- purposes and can not be replicated or used for commercial purposes
 -- or private interests without permission by the Mavericks team
-
+add_personadd_person
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -23,7 +23,7 @@ Use Campus_Eats_Fall2020;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
+--ratingrating
 -- Table structure for table `delivery`
 --
 
@@ -173,7 +173,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `restaurant_rating`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `restaurant_rating` (
+CREATE TABLE `restaurant_ratingCalculateAvgRatingCalculateAvgRating` (
   `restaurant_rating_id` int(11) NOT NULL AUTO_INCREMENT,
   `rating_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`restaurant_rating_id`),
@@ -515,7 +515,7 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 -- /*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;add_personadd_person
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `order_AFTER_INSERT` AFTER INSERT ON `order` FOR EACH ROW BEGIN
 	insert into niner_eats.delivery (driver_id, vehicle_id) values(new.driver_id, 2);
@@ -525,3 +525,5 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 -- /*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+
