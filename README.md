@@ -34,7 +34,7 @@ When a query is executed, the MySQL Query Optimizer tries to devise an optimal p
 with it can be viewed plan by prefixing the query with EXPLAIN. With the help of EXPLAIN, you can see where you should add indexes to tables so 
 that the statement executes faster by using indexes to find rows. The EXPLAIN statement can also be used to check whether the optimizer joins the tables in an optimal order. 
 
-![alt text](https://imgur.com/vSmFriN)
+![alt text](https://imgur.com/vSmFriN.png)
 
 Project Demonstration Video\
 Use the Link below to view our Project Demonstration Video on YouTube\
