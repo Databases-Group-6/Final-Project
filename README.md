@@ -24,3 +24,12 @@ Business Rules\
 Entity Relationship Diagram\
 ![alt text](https://imgur.com/uRxsB05.png)
 
+Query Optimization and EXPLAIN Statement Discussion\
+
+Optimization is a key aspect of queries and scripts as its usually not possible to the resourcces needed to make a script run as quickly as possible.
+It is also important to ensure overoptimzation does not occur as this can be unneccessary and result in excessive usage of resources. The EXPLAIN statement
+is a powerful tool available for developers and coders that can be used to optimize SQL statements and scripts. 
+
+When a query is executed, the MySQL Query Optimizer tries to devise an optimal plan for query execution. This plan and the information associated 
+with it can be viewed plan by prefixing the query with EXPLAIN. With the help of EXPLAIN, you can see where you should add indexes to tables so 
+that the statement executes faster by using indexes to find rows. The EXPLAIN statement can also be used to check whether the optimizer joins the tables in an optimal order. 
